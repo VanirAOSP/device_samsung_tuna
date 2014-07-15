@@ -15,7 +15,7 @@
 #
 
 # Hardware
-BOARD_HARDWARE_CLASS := device/samsung/tuna/cmhw
+BOARD_HARDWARE_CLASS := $(LOCAL_PATH)/cmhw
 
 # This variable is set first, so it can be overridden
 # by BoardConfigVendor.mk
@@ -25,16 +25,17 @@ USE_CAMERA_STUB := true
 -include vendor/samsung/tuna/BoardConfigVendor.mk
 
 # Default values, if not overridden else where.
-TARGET_BOARD_INFO_FILE ?= device/samsung/tuna/board-info.txt
-BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR ?= device/samsung/tuna/bluetooth
+TARGET_BOARD_INFO_FILE ?= $(LOCAL_PATH)/board-info.txt
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR ?= $(LOCAL_PATH)/bluetooth
 
+# Processor
 TARGET_CPU_ABI := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
 TARGET_CPU_SMP := true
+TARGET_CPU_VARIANT := cortex-a9
 TARGET_ARCH := arm
 TARGET_ARCH_VARIANT := armv7-a-neon
 TARGET_ARCH_VARIANT_CPU := cortex-a9
-TARGET_CPU_VARIANT := cortex-a9
 ARCH_ARM_HAVE_TLS_REGISTER := true
 
 TARGET_USE_QCOM_BIONIC_OPTIMIZATION := true
@@ -42,20 +43,21 @@ TARGET_NO_BOOTLOADER := true
 TARGET_BINDER_VM_MEGABYTES := 1
 WITH_DEXPREOPT := true
 
-TARGET_KERNEL_CONFIG := tuna_defconfig
+# Kernel
 BOARD_KERNEL_BASE := 0x80000000
 # BOARD_KERNEL_CMDLINE :=
 TARGET_KERNEL_SOURCE := kernel/samsung/tuna
+TARGET_KERNEL_CONFIG := tuna_defconfig
 TARGET_KERNEL_CUSTOM_TOOLCHAIN := arm-eabi-4.7
 
-TARGET_PREBUILT_KERNEL := device/samsung/tuna/kernel
+TARGET_PREBUILT_KERNEL := $(LOCAL_PATH)/kernel
 
 TARGET_NO_RADIOIMAGE := true
 TARGET_BOARD_PLATFORM := omap4
 TARGET_BOOTLOADER_BOARD_NAME := tuna
 TARGET_USE_GATOR := true
 
-BOARD_EGL_CFG := device/samsung/tuna/egl.cfg
+BOARD_EGL_CFG := $(LOCAL_PATH)/prebuilt/lib/egl/egl.cfg
 BOARD_CREATE_TUNA_HDCP_KEYS_SYMLINK := true
 
 #BOARD_USES_HGL := true
@@ -77,9 +79,9 @@ BOARD_RECOVERY_SWIPE := true
 
 # device-specific extensions to the updater binary
 TARGET_RECOVERY_UPDATER_LIBS += librecovery_updater_tuna
-TARGET_RELEASETOOLS_EXTENSIONS := device/samsung/tuna
+TARGET_RELEASETOOLS_EXTENSIONS := $(LOCAL_PATH)
 
-TARGET_RECOVERY_FSTAB = device/samsung/tuna/fstab.tuna
+TARGET_RECOVERY_FSTAB = $(LOCAL_PATH)/rootdir/fstab.tuna
 TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
 BOARD_SYSTEMIMAGE_PARTITION_SIZE := 685768704
@@ -120,7 +122,7 @@ BOARD_HAS_NO_SELECT_BUTTON := true
 BOARD_USE_CUSTOM_RECOVERY_FONT := \"roboto_15x24.h\"
 
 BOARD_SEPOLICY_DIRS += \
-        device/samsung/tuna/sepolicy
+        $(LOCAL_PATH)/sepolicy
 
 BOARD_SEPOLICY_UNION += \
         genfs_contexts \
