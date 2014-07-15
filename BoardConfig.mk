@@ -28,13 +28,14 @@ USE_CAMERA_STUB := true
 TARGET_BOARD_INFO_FILE ?= device/samsung/tuna/board-info.txt
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR ?= device/samsung/tuna/bluetooth
 
+# Processor
 TARGET_CPU_ABI := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
 TARGET_CPU_SMP := true
+TARGET_CPU_VARIANT := cortex-a9
 TARGET_ARCH := arm
 TARGET_ARCH_VARIANT := armv7-a-neon
 TARGET_ARCH_VARIANT_CPU := cortex-a9
-TARGET_CPU_VARIANT := cortex-a9
 ARCH_ARM_HAVE_TLS_REGISTER := true
 
 TARGET_USE_QCOM_BIONIC_OPTIMIZATION := true
@@ -42,10 +43,11 @@ TARGET_NO_BOOTLOADER := true
 TARGET_BINDER_VM_MEGABYTES := 1
 WITH_DEXPREOPT := true
 
-TARGET_KERNEL_CONFIG := tuna_defconfig
+# Kernel
 BOARD_KERNEL_BASE := 0x80000000
 # BOARD_KERNEL_CMDLINE :=
 TARGET_KERNEL_SOURCE := kernel/samsung/tuna
+TARGET_KERNEL_CONFIG := tuna_defconfig
 TARGET_KERNEL_CUSTOM_TOOLCHAIN := arm-eabi-4.7
 
 TARGET_PREBUILT_KERNEL := device/samsung/tuna/kernel
@@ -79,7 +81,7 @@ BOARD_RECOVERY_SWIPE := true
 TARGET_RECOVERY_UPDATER_LIBS += librecovery_updater_tuna
 TARGET_RELEASETOOLS_EXTENSIONS := device/samsung/tuna
 
-TARGET_RECOVERY_FSTAB = device/samsung/tuna/fstab.tuna
+TARGET_RECOVERY_FSTAB = device/samsung/tuna/rootdir/fstab.tuna
 TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
 BOARD_SYSTEMIMAGE_PARTITION_SIZE := 685768704
